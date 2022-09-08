@@ -1,0 +1,17 @@
+#This is a basic worflow to help you got started
+
+name: "Newman Test"
+on: [push, pull_requets]
+
+  jobs:
+    build:
+     runs-on: ubuntu-latest
+     container:
+     image: postman/newman
+     steps:
+     - name: Checkout
+     uses: actions/checkout@v2
+     
+     - name: Run API Tests
+      run: newman run RestfulBookerBVT.postman_collectiion.json -e production.postman_environment.json
+      
